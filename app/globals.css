@@ -1,0 +1,240 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.font-montserrat {
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+/* Animation classes - Faster animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  animation: fadeIn 0.5s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay-2 {
+  animation: fadeIn 0.5s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+/* Replace the existing tablet media queries in your globals.css with these updated ones */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-content {
+    padding-left: 2rem !important;
+    padding-right: 1rem !important;
+    text-align: left !important; /* Keep text left-aligned */
+  }
+  
+  .hero-heading {
+    font-size: clamp(2rem, 5vw, 3.5rem) !important;
+    line-height: 1.2 !important;
+  }
+  
+  .hero-description {
+    font-size: clamp(1rem, 2.5vw, 1.25rem) !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  .hero-button {
+    font-size: clamp(1rem, 2.2vw, 1.125rem) !important;
+    padding: 0.875rem 2rem !important;
+  }
+  
+  .hero-button-container {
+    justify-content: flex-start !important; /* Keep button left-aligned */
+  }
+}
+
+/* Specific adjustments for landscape tablets */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .hero-section {
+    min-height: 100vh !important;
+    padding-top: 5rem !important;
+  }
+  
+  .hero-content {
+    padding-left: 3rem !important;
+    text-align: left !important; /* Maintain left alignment */
+  }
+  
+  .hero-button-container {
+    justify-content: flex-start !important; /* Keep button left-aligned */
+  }
+}
+
+@media (min-width: 768px) and (max-width: 834px) and (orientation: portrait) {
+  .hero-content {
+    text-align: left !important; /* Keep left alignment */
+    padding-left: 1.5rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .hero-button-container {
+    justify-content: flex-start !important; /* Keep button left-aligned */
+  }
+}
+
+/* Specific fixes for common tablet sizes */
+@media (min-width: 820px) and (max-width: 1180px) {
+  .hero-content {
+    padding-left: 2.5rem !important;
+    text-align: left !important; /* Maintain left alignment */
+  }
+  
+  .hero-button-container {
+    justify-content: flex-start !important; /* Keep button left-aligned */
+  }
+}
+
+/* Additional rule to ensure flex layout is maintained on tablets */
+@media (min-width: 768px) {
+  .hero-section .container {
+    display: flex !important;
+    flex-direction: row !important; /* Force horizontal layout */
+    align-items: center !important;
+  }
+  
+  .hero-content {
+    flex: 1 !important;
+    max-width: 60% !important;
+  }
+  
+  .hero-section .container > div:last-child {
+    flex: 1 !important;
+    max-width: 40% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+}
+
+/* Calendly Widget Styling */
+.calendly-inline-widget {
+  min-height: 600px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.calendly-inline-widget iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .calendly-inline-widget, 
+  .calendly-inline-widget iframe {
+    min-height: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .calendly-inline-widget, 
+  .calendly-inline-widget iframe {
+    min-height: 550px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendly-inline-widget, 
+  .calendly-inline-widget iframe {
+    min-height: 500px;
+  }
+}
+
+/* Fix for landscape mode on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .calendly-inline-widget, 
+  .calendly-inline-widget iframe {
+    min-height: 400px;
+  }
+}
